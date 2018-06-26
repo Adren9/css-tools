@@ -1,0 +1,17 @@
+<div class="wrapper">
+  <button class="button-close"
+    (click)="this.sidenavService.close()"
+    matTooltip="Close navigation menu">
+    <i class="icon-cancel" aria-hidden="true"></i>
+  </button>
+  <h2 class="sidenav-header">Tools</h2>
+  <nav>
+    <ul class="tool-list">
+      <li *ngFor="let navItem of navItems" class="tool">
+        <a [routerLink]="navItem.link" class="tool-link" routerLinkActive="active">
+          {{ navItem.title }}
+        </a>
+      </li>
+    </ul>
+  </nav>
+</div>

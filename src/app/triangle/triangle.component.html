@@ -1,0 +1,74 @@
+<div class="wrapper">
+  <h3 class="sr-only">triangle generator</h3>
+  <div class="controls">
+    <div>
+      <label class="d-block" for="line-segment-a">Length of A</label>
+      <mat-slider color="primary" min="0" max="125" step="1"
+        [value]="tool.lineSegmentA"
+        (input)="tool.lineSegmentA = $event.value">
+      </mat-slider>
+      <app-numeric-input [id]="'line-segment-a'" [min]="0" [max]="125"
+        [value]="tool.lineSegmentA"
+        (input)="tool.lineSegmentA = $event">
+      </app-numeric-input>px
+    </div>
+    <div>
+      <label class="d-block" for="line-segment-b">Length of B</label>
+      <mat-slider color="primary" min="0" max="125" step="1"
+        [value]="tool.lineSegmentB"
+        (input)="tool.lineSegmentB = $event.value">
+      </mat-slider>
+      <app-numeric-input [id]="'line-segment-b'" [min]="0" [max]="125"
+        [value]="tool.lineSegmentB"
+        (input)="tool.lineSegmentB = $event">
+      </app-numeric-input>px
+    </div>
+    <div>
+      <label class="d-block" for="line-segment-h">Length of H</label>
+      <mat-slider color="primary" min="0" max="250" step="1"
+        [value]="tool.lineSegmentH"
+        (input)="tool.lineSegmentH = $event.value">
+      </mat-slider>
+      <app-numeric-input [id]="'line-segment-h'" [min]="0" [max]="250"
+        [value]="tool.lineSegmentH"
+        (input)="tool.lineSegmentH = $event">
+      </app-numeric-input>px
+    </div>
+    <div class="color">
+      <label class="d-block">Color</label>
+      <div class="triangle-color-preview" [style.backgroundColor]="tool.color.css"
+       (click)="showColorPicker = true;"
+       matTooltip="Show color-picker">
+      </div>
+      <app-color-picker class="triangle-color-picker" [hidden]="!showColorPicker"
+        (mousedown)="$event.stopPropagation()"
+        [color]="tool.color.hex" [opacity]="tool.color.opacity"
+        (change)="onColorChange($event)">
+      </app-color-picker>
+    </div>
+  </div>
+  <div class="preview">
+    <div class="element-preview-wrapper">
+      <div class="buttons-rotate">
+        <button mat-raised-button color="primary"
+          class="button-rotate-left"
+          (click)="rotateLeft()"
+          matTooltip="Rotate left">
+          <span class="icon-ccw" aria-hidden="true"></span>
+        </button>
+        <button mat-raised-button color="primary" class="button-rotate-right"
+          (click)="rotateRight()"
+          matTooltip="Rotate right">
+          <span class="icon-cw" aria-hidden="true"></span>
+        </button>
+      </div>
+      <div class="element-preview" [ngStyle]="getPreviewStyle()">
+        <div class="line-segment-label" [ngStyle]="getLabelAStyle()">A</div>
+        <div class="line-segment-label" [ngStyle]="getLabelBStyle()">B</div>
+        <div class="line-segment-label" [ngStyle]="getLabelHStyle()">H</div>
+        <div class="height-line" [style.height]="tool.lineSegmentH + 'px'"></div>
+      </div>
+    </div>
+    <app-css-preview [content]="getCssPreview()"></app-css-preview>
+  </div>
+</div>

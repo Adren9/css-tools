@@ -1,0 +1,99 @@
+<div class="wrapper">
+  <h3 class="sr-only">gradient generator</h3>
+  <div class="alpha-background">
+    <div class="gradient-preview" [style.background]="getGradientForPreview()"></div>
+  </div>
+  <div class="css-preview">
+    <app-css-preview [content]="getCssPreview()"></app-css-preview>
+  </div>
+  <div class="buttons-gradient-type">
+    <mat-button-toggle-group [(ngModel)]="gradientType" matTooltip="Change gradient type">
+      <mat-button-toggle [value]="GradientType.Linear">Linear</mat-button-toggle>
+      <mat-button-toggle [value]="GradientType.Radial">Radial</mat-button-toggle>
+    </mat-button-toggle-group>
+  </div>
+  <div class="controls-direction" *ngIf="gradientType === GradientType.Linear">
+    <mat-slider color="primary" [min]="0" [max]="360"
+      [value]="gradientDirection"
+      (input)="gradientDirection = $event.value">
+    </mat-slider>
+    <label for="gradientAngle" class="sr-only">Gradient angle</label>
+    <app-numeric-input [min]="0" [max]="360" [id]="'gradientAngle'"
+      [value]="gradientDirection"
+      (input)="gradientDirection = $event">
+    </app-numeric-input>deg
+  </div>
+  <div class="gradient-panel-wrapper">
+    <div class="alpha-background">
+      <div class="gradient-panel" [style.background]="getGradientForLocationPanel()"
+        #locationPanel (click)="onGradientPanelClick($event)"
+        matTooltip="Add color-stop" matTooltipShowDelay="400" #addColorTooltip="matTooltip">
+
+        <div *ngFor="let colorStop of colorStops"
+          class="color-stop-pointer" [class.active]="activeColorStop === colorStop"
+          appPointer  [container]="locationPanel" [disableYAxis]="true"
+          [x]="colorStop.pointerPosition" [allowContainerClick]="false"
+          (positionChange)="onPointerPositionChange($event, colorStop)"
+          (mousedown)="changeActiveColorStop(colorStop)"
+          (touchstart)="changeActiveColorStop(colorStop)"
+          (click)="$event.stopPropagation()"
+          (mouseenter)="addColorTooltip.hide()" (mouseleave)="addColorTooltip.show()">
+
+          {{ colorStop.location }}
+          <div class="arrow-active" [style.borderColor]="colorStop.color.css"></div>
+          <button *ngIf="checkColorStopCanBeRemoved()"
+            class="button-remove-pointer"
+            (click)="onButtonRemoveClick($event, colorStop);"
+            (mousedown)="$event.stopPropagation()"
+            (touchstart)="$event.stopPropagation()"
+            matTooltip="Remove color-stop">
+            <i class="icon-cancel" aria-hidden="true"></i>
+          </button>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <div class="controls">
+    <div class="color-picker-wrapper">
+      <app-color-picker [color]="activeColorStop.color.hex"
+        [opacity]="activeColorStop.color.opacity"
+        (change)="onColorChange($event)">
+      </app-color-picker>
+    </div>
+    <div class="color-stops-table-wrapper">
+      <table>
+        <tr>
+          <th>Color</th>
+          <th>Location</th>
+          <th>Remove</th>
+        </tr>
+        <tr *ngFor="let colorStop of colorStops"
+          (click)="changeActiveColorStop(colorStop)"
+          [class.active]="colorStop === activeColorStop">
+          <td>
+            <div class="color-preview-background alpha-background">
+              <div class="color-preview" [style.backgroundColor]="colorStop.color.css">
+              </div>
+            </div>
+          </td>
+          <td>
+            <app-numeric-input class="location-input" [min]="0" [max]="100"
+              [value]="colorStop.location"
+              (input)="onLocationInputChange($event, colorStop)">
+            </app-numeric-input>%
+          </td>
+          <td>
+            <button class="button-remove"
+              [disabled]="!checkColorStopCanBeRemoved()"
+              (click)="onButtonRemoveClick($event, colorStop)"
+              matTooltip="Remove color-stop">
+              <i class="icon-cancel" aria-hidden="true"></i>
+            </button>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>

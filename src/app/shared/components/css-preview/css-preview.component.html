@@ -1,0 +1,9 @@
+<div class="css-preview">
+  <span class="sr-only">css preview</span>
+  <button mat-raised-button color="primary"
+    class="copy-btn" (click)="copyToClipboard(preview)"
+    matTooltip="Copy to clipboard">
+    Copy
+  </button>
+  <pre #preview><code>{{ content }}</code></pre>
+</div>

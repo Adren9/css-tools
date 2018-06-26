@@ -1,0 +1,22 @@
+.css-preview {
+  width: 100%;
+  margin: 10px auto;
+  padding: 15px;
+  box-sizing: border-box;
+  font-size: 15px;
+  line-height: 20px;
+  background-color: #eaeaea;
+  color: #555;
+  pre {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+  }
+  .copy-btn {
+    display: block;
+    min-width: 50px;
+    padding: 0 5px;
+    margin: 0 0 5px auto;
+    line-height: 24px;
+    font-size: 14px;
+  }
+}

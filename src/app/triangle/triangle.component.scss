@@ -1,0 +1,124 @@
+@import './src/scss/variables';
+
+.wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  margin: 0 auto;
+  padding: 10px;
+  box-sizing: border-box;
+}
+.controls, .preview {
+  width: 100%;
+}
+.controls {
+  text-align: center;
+}
+.mat-slider {
+  width: 75%;
+}
+::ng-deep app-numeric-input input {
+  width: 30px;
+}
+.element-preview-wrapper {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  border: 1px solid #aaa;
+  width: 350px;
+  max-width: 100%;
+  min-width: 250px;
+  height: 350px;
+}
+.buttons-rotate {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 5px;
+  button {
+    min-width: 30px;
+    line-height: 30px;
+  }
+  .button-rotate-left {
+    margin: 0 5px 0 0;
+  }
+}
+.element-preview {
+  position: relative;
+  outline: 1px dashed #555;
+}
+.line-segment-label {
+  position: absolute;
+  text-align: center;
+  font-weight: 700;
+  font-size: 14px;
+  color: #fff;
+  text-shadow: 0 0 5px #000;
+  mix-blend-mode: difference;
+}
+.height-line {
+  position: absolute;
+  width: 0px;
+  left: -1px;
+  border-left: 2px dashed #111;
+}
+.color {
+  position: relative;
+}
+.triangle-color-preview {
+  width: 50px;
+  height: 30px;
+  margin: 16px auto;
+  cursor: pointer;
+}
+.triangle-color-picker {
+  position: absolute;
+  left: 50%;
+  z-index: 10;
+  transform: translateX(-50%);
+}
+@media(min-width: $breakpoint_md) {
+  .triangle-color-preview {
+    margin: 16px 0;
+  }
+  .triangle-color-picker {
+    left: 0;
+    transform: none;
+  }
+  .wrapper {
+    width: 768px;
+  }
+  .controls {
+    text-align: left;
+  }
+  .controls, .preview {
+    width: 374px;
+  }
+  .mat-slider {
+    width: 290px;
+  }
+}
+@media(min-width: $breakpoint_lg) {
+  .wrapper {
+    width: 742px;
+  }
+  .controls, .preview {
+    width: 361px;
+  }
+  .mat-slider {
+    width: 280px;
+  }
+}
+@media(min-width: $breakpoint_xl) {
+  .wrapper {
+    width: 950px;
+  }
+  .controls, .preview {
+    width: 465px;
+  }
+  .mat-slider {
+    width: 340px;
+  }
+}

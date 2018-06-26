@@ -1,0 +1,8 @@
+<div class="wrapper">
+  <app-sv-picker [hue]="hsv.h" [saturation]="hsv.s" [value]="hsv.v"
+    (saturationChange)="onSaturationChange($event)"
+    (valueChange)="onValueChange($event)">
+  </app-sv-picker>
+  <app-hue-slider [hue]="hsv.h" (change)="onHueChange($event)"></app-hue-slider>
+  <app-opacity-slider *ngIf="enableOpacity" [hue]="hsv.h" [opacity]="opacity" (change)="onOpacityChange($event)"></app-opacity-slider>
+</div>

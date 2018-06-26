@@ -1,0 +1,120 @@
+<div class="wrapper">
+  <h3 class="sr-only">border-radius generator</h3>
+  <div class="controls">
+    <div>
+      <label class="d-block" for="all-corners">All Corners</label>
+      <mat-slider color="primary" min="0" max="200" step="1"
+        [value]="tool.radius.all"
+        (input)="changeAllCorners($event.value)">
+      </mat-slider>
+      <app-numeric-input [id]="'all-corners'" [min]="0" [max]="200"
+        [value]="tool.radius.all"
+        (input)="changeAllCorners($event)">
+      </app-numeric-input>px
+    </div>
+    <div>
+      <label class="d-block" for="top-left">Top Left</label>
+      <mat-slider color="primary" min="0" max="200" step="1"
+        [value]="tool.radius.topLeft"
+        (input)="tool.radius.topLeft = $event.value">
+      </mat-slider>
+      <app-numeric-input [id]="'top-left'" [min]="0" [max]="200"
+        [value]="tool.radius.topLeft"
+        (input)="tool.radius.topLeft = $event">
+      </app-numeric-input>px
+    </div>
+    <div>
+      <label class="d-block" for="top-right">Top Right</label>
+      <mat-slider color="primary" min="0" max="200" step="1"
+        [value]="tool.radius.topRight"
+        (input)="tool.radius.topRight = $event.value">
+      </mat-slider>
+      <app-numeric-input [id]="'top-right'" [min]="0" [max]="200"
+        [value]="tool.radius.topRight"
+        (input)="tool.radius.topRight = $event">
+      </app-numeric-input>px
+    </div>
+    <div>
+      <label class="d-block" for="bottom-right">Bottom Right</label>
+      <mat-slider color="primary" min="0" max="200" step="1"
+        [value]="tool.radius.bottomRight"
+        (input)="tool.radius.bottomRight = $event.value">
+      </mat-slider>
+      <app-numeric-input [id]="'bottom-right'" [min]="0" [max]="200"
+        [value]="tool.radius.bottomRight"
+        (input)="tool.radius.bottomRight = $event">
+      </app-numeric-input>px
+    </div>
+    <div>
+      <label class="d-block" for="bottom-left">Bottom Left</label>
+      <mat-slider color="primary" min="0" max="200" step="1"
+        [value]="tool.radius.bottomLeft"
+        (input)="tool.radius.bottomLeft = $event.value">
+      </mat-slider>
+      <app-numeric-input [id]="'bottom-left'" [min]="0" [max]="200"
+        [value]="tool.radius.bottomLeft"
+        (input)="tool.radius.bottomLeft = $event">
+      </app-numeric-input>px
+    </div>
+    <div>
+      <label class="d-block" for="border-width">Border Width</label>
+      <mat-slider color="primary" min="0" max="100" step="1"
+        [value]="tool.borderWidth"
+        (input)="tool.borderWidth = $event.value">
+      </mat-slider>
+      <app-numeric-input [id]="'border-width'" [min]="0" [max]="100"
+        [value]="tool.borderWidth"
+        (input)="tool.borderWidth = $event">
+      </app-numeric-input>px
+    </div>
+    <div>
+      <label class="d-block" for="border-style">Border Style</label>
+      <mat-form-field>
+        <mat-select [(ngModel)]="tool.borderStyle" aria-label="border style">
+          <mat-option *ngFor="let value of borderStyleValues" [value]="value">
+            {{ value }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="border-color">
+      <label>Border Color</label>
+      <div class="border-color-preview"
+        [style.backgroundColor]="tool.borderColor.css"
+        (click)="showBorderColorPicker = true;"
+        matTooltip="Show color-picker">
+      </div>
+      <app-color-picker class="border-color-picker" [hidden]="!showBorderColorPicker"
+        (mousedown)="$event.stopPropagation()"
+        [color]="tool.borderColor.hex" [opacity]="tool.borderColor.opacity"
+        (change)="onBorderColorChange($event)">
+      </app-color-picker>
+    </div>
+    <div>
+      <label class="d-block" for="width">Width</label>
+      <mat-slider color="primary" min="0" max="250" step="1"
+        [value]="tool.width"
+        (input)="tool.width = $event.value">
+      </mat-slider>
+      <app-numeric-input [id]="'width'" [min]="0" [max]="250"
+        [value]="tool.width"
+        (input)="tool.width = $event">
+      </app-numeric-input>px
+    </div>
+    <div>
+      <label class="d-block" for="height">Height</label>
+      <mat-slider color="primary" min="0" max="250" step="1"
+        [value]="tool.height"
+        (input)="tool.height = $event.value">
+      </mat-slider>
+      <app-numeric-input [id]="'height'" [min]="0" [max]="250"
+        [value]="tool.height"
+        (input)="tool.height = $event">
+      </app-numeric-input>px
+    </div>
+  </div>
+  <div class="preview">
+    <div class="element-preview" [ngStyle]="getPreviewStyle()"></div>
+    <app-css-preview [content]="getCssPreview()"></app-css-preview>
+  </div>
+</div>

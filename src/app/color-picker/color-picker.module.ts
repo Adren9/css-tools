@@ -1,0 +1,20 @@
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { ColorPickerComponent } from './color-picker.component';
+import { SvPickerComponent } from './components/sv-picker/sv-picker.component';
+import { HueSliderComponent } from './components/hue-slider/hue-slider.component';
+import { OpacitySliderComponent } from './components/opacity-slider/opacity-slider.component';
+import { PointerDirective } from './directives/pointer.directive';
+import { ColorConverterService } from './services/color-converter.service';
+
+@NgModule({
+  imports: [
+    CommonModule
+  ],
+  providers: [
+    ColorConverterService
+  ],
+  declarations: [ColorPickerComponent, SvPickerComponent, HueSliderComponent, OpacitySliderComponent, PointerDirective],
+  exports: [ColorPickerComponent]
+})
+export class ColorPickerModule { }

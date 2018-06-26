@@ -1,0 +1,91 @@
+@import './src/scss/variables';
+
+.wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  margin: 0 auto;
+  padding: 10px;
+  box-sizing: border-box;
+}
+.controls, .preview {
+  width: 100%;
+}
+.element-preview {
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+.controls {
+  text-align: center;
+}
+.mat-slider {
+  width: 75%;
+}
+::ng-deep app-numeric-input input {
+  width: 30px;
+}
+::ng-deep .mat-select-value {
+  color: #fff;
+}
+.border-color-preview {
+  height: 30px;
+  width: 50px;
+  margin: 16px auto;
+  cursor: pointer;
+}
+.border-color {
+  position: relative;
+}
+.border-color-picker {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -100%);
+  z-index: 10;
+}
+
+@media(min-width: $breakpoint_md) {
+  .border-color-preview {
+    margin: 16px 0;
+  }
+  .border-color-picker {
+    left: 0;
+    transform: translateY(-100%);
+  }
+  .wrapper {
+    width: 768px;
+  }
+  .controls {
+    text-align: left;
+  }
+  .controls, .preview {
+    width: 374px;
+  }
+  .mat-slider {
+    width: 290px;
+  }
+}
+
+@media(min-width: $breakpoint_lg) {
+  .wrapper {
+    width: 742px;
+  }
+  .controls, .preview {
+    width: 361px;
+  }
+  .mat-slider {
+    width: 280px;
+  }
+}
+
+@media(min-width: $breakpoint_xl) {
+  .wrapper {
+    width: 950px;
+  }
+  .controls, .preview {
+    width: 465px;
+  }
+  .mat-slider {
+    width: 340px;
+  }
+}

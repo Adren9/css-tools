@@ -1,0 +1,7 @@
+<div class="slider" #slider>
+  <div class="pointer" [ngStyle]="pointerStyle"
+    appPointer [disableYAxis]="true" [container]="slider"
+    (positionChange)="onPointerPositionChange($event)"
+    [x]="pointerX">
+  </div>
+</div>

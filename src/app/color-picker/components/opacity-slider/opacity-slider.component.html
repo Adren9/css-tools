@@ -1,0 +1,7 @@
+<div class="slider" #slider>
+  <div class="opacity-gradient" [style.backgroundImage]="sliderBackgroundGradient">
+    <div class="pointer" appPointer [disableYAxis]="true" [container]="slider"
+    (positionChange)="onPointerPositionChange($event)"
+    [x]="pointerX"></div>
+  </div>
+</div>

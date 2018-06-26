@@ -1,0 +1,13 @@
+<div class="wrapper">
+  <div class="sidenav" [class.opened]="sidenav.isOpened">
+    <app-sidenav></app-sidenav>
+  </div>
+
+  <div class="content">
+    <app-header class="app-header"></app-header>
+    <div class="main-content">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>
+<app-loading-overlay></app-loading-overlay>

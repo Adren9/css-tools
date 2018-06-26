@@ -1,0 +1,14 @@
+<header class="wrapper">
+  <button class="button-open-sidenav"
+    (click)="this.sidenavService.open()"
+    *ngIf="!this.sidenavService.isOpened"
+    matTooltip="Open navigation menu">
+    <i class="icon-menu" aria-hidden="true"></i>
+  </button>
+  <h1 class="app-title">
+    <span aria-hidden="true">
+      <span style="color: #379ad6">CSS<i class="icon-css3"></i></span> tools
+    </span>
+    <span class="sr-only">css3 tools</span>
+  </h1>
+</header>

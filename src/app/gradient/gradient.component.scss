@@ -1,0 +1,220 @@
+@import './src/scss/variables';
+
+.wrapper {
+  padding: 10px;
+}
+.alpha-background {
+  background-image: url('/assets/alpha.png');
+  background-repeat: repeat;
+}
+
+.gradient-preview {
+  width: 100%;
+  height: 200px;
+  margin: 0 0 10px 0;
+}
+.buttons-gradient-type {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  .mat-button-toggle-group {
+    background-color: #333;
+  }
+  .mat-button-toggle {
+    color: #fff;
+  }
+  .mat-button-toggle-checked {
+    background-color: #3f51b5;
+  }
+
+}
+.controls-direction {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  .mat-slider {
+    width: 200px;
+    margin: 0 5px 0 0;
+  }
+  ::ng-deep input {
+    width: 35px;
+  }
+}
+.gradient-panel-wrapper {
+  padding: 20px;
+  margin: 20px 0;
+}
+.gradient-panel {
+  width: 100%;
+  height: 60px;
+  cursor: copy;
+}
+.color-stop-pointer {
+  height: 24px;
+  line-height: 24px;
+  width: 24px;
+  top: 16px;
+  border: 2px solid #eee;
+  border-radius: 50%;
+  background-color: #242e3b;
+  font-size: 11px;
+  font-weight: 700;
+  text-align: center;
+  cursor: grabbing;
+  &:before, &:after {
+    content: '';
+    display: block;
+    position: absolute;
+    height: 16px;
+    width: 2px;
+    left: 8px;
+    border: 2px solid #eee;
+    background-color: #242e3b;
+  }
+  &:before {
+    top: -18px;
+    border-bottom: 0;
+  }
+  &:after {
+    bottom: -18px;
+    border-top: 0;
+  }
+  .arrow-active, .button-remove-pointer {
+    display: none;
+  }
+
+}
+.color-stop-pointer.active {
+  .arrow-active {
+    display: block;
+    position: absolute;
+    top: -40px;
+    left: 1px;
+    border-top: 16px solid #ff0000;
+    border-left: 10px solid transparent !important;
+    border-right: 10px solid transparent !important;
+  }
+  .button-remove-pointer {
+    display: block;
+    position: absolute;
+    width: 34px;
+    height: 22px;
+    padding: 0;
+    margin: 0;
+    bottom: -50px;
+    left: -7px;
+    border: 2px solid #fff;
+    box-sizing: content-box;
+    border-radius: 5px;
+    text-align: center;
+    background-color: transparent;
+    color: #fff;
+    cursor: pointer;
+    &:hover {
+      background-color: #f44336;
+    }
+  }
+}
+
+.controls {
+  margin: 30px 0;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 auto;
+}
+.color-picker-wrapper {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin: 10px 0;
+}
+.color-stops-table-wrapper {
+  width: 100%;
+  margin: 10px 0;
+  table {
+    width: 100%;
+  }
+  tr {
+    &:hover td {
+      background-color: lighten(#242e3b, 5%);
+    }
+  }
+  tr.active {
+    td {
+      background-color:  lighten(#242e3b, 10%);
+    }
+  }
+  td, th {
+    padding: 10px;
+    text-align: center;
+    vertical-align: middle;
+  }
+  th {
+    color: #ccc;
+  }
+  td {
+    cursor: pointer;
+  }
+  ::ng-deep .location-input input {
+    width: 35px;
+    margin-right: 2px;
+  }
+  .button-remove {
+    height: 30px;
+    width: 40px;
+    border: 2px solid #fff;
+    border-radius: 5px;
+    background-color: transparent;
+    color: #fff;
+    cursor: pointer;
+    &:hover {
+      background-color: #f44336;
+    }
+    &:disabled {
+      background-color: #999;
+    }
+  }
+}
+.color-preview-background {
+  width: 40px;
+  height: 30px;
+  margin: 0 auto;
+  border: 2px solid #fff;
+  border-radius: 5px;
+  overflow: hidden;
+}
+.color-preview {
+  width: 100%;
+  height: 100%;
+}
+
+@media(min-width: $breakpoint_md) {
+  .controls {
+    width: 748px;
+  }
+  .color-picker-wrapper {
+    width: 300px;
+  }
+  .color-stops-table-wrapper {
+    width: 448px;
+  }
+}
+
+@media(min-width: $breakpoint_lg) {
+  .controls {
+    width: 722px;
+  }
+  .color-stops-table-wrapper {
+    width: 422px;
+  }
+}
+@media(min-width: $breakpoint_xl) {
+  .controls {
+    width: 930px;
+  }
+  .color-stops-table-wrapper {
+    width: 630px;
+  }
+}

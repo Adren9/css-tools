@@ -1,0 +1,37 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,700&subset=latin-ext');
+@import './scss/reset';
+@import './assets/icons/fontello/css/fontello.css';
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+@import './src/scss/variables';
+@import './src/scss/mixins/scrollbar';
+
+body {
+  font-family: 'Montserrat', 'sans-serif';
+  font-size: 16px;
+  font-weight: 400;
+  color: $font_color;
+}
+
+@include scrollbar;
+
+.d-block {
+  display: block;
+}
+input[type=text] {
+  background-color: #2e3a4b;
+  color: #fff;
+  border: 1px solid #aaa;
+  padding: 3px;
+}
+.sr-only {
+  border: 0;
+  clip: rect(1px, 1px, 1px, 1px);
+  clip-path: inset(50%);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute !important;
+  width: 1px;
+  word-wrap: normal !important;
+}

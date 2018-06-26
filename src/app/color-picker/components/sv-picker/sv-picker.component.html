@@ -1,0 +1,4 @@
+<div class="picker" #picker [ngStyle]="pickerStyle">
+  <div class="pointer" appPointer [container]="picker" (positionChange)="onPointerPositionChange($event)"
+  [x]="pointerX" [y]="pointerY"></div>
+</div>

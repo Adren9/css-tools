@@ -1,0 +1,109 @@
+<div class="wrapper">
+  <h3 class="sr-only">box-shadow generator</h3>
+  <div class="controls">
+    <div>
+      <label class="d-block" for="h-offset">Horizontal Offset</label>
+      <mat-slider color="primary" min="-100" max="100" step="1"
+        [value]="tool.hOffset"
+        (input)="tool.hOffset = $event.value">
+      </mat-slider>
+      <app-numeric-input [id]="'h-offset'" [min]="-100" [max]="100"
+        [value]="tool.hOffset"
+        (input)="tool.hOffset = $event">
+      </app-numeric-input>px
+    </div>
+    <div>
+      <label class="d-block" for="v-offset">Vertical Offset</label>
+      <mat-slider color="primary" min="-100" max="100" step="1"
+        [value]="tool.vOffset"
+        (input)="tool.vOffset = $event.value">
+      </mat-slider>
+      <app-numeric-input [id]="'v-offset'" [min]="-100" [max]="100"
+        [value]="tool.vOffset"
+        (input)="tool.vOffset = $event">
+      </app-numeric-input>px
+    </div>
+    <div>
+      <label class="d-block" for="blur">Blur</label>
+      <mat-slider color="primary" min="0" max="100" step="1"
+        [value]="tool.blur"
+        (input)="tool.blur = $event.value">
+      </mat-slider>
+      <app-numeric-input [id]="'blur'" [min]="0" [max]="100"
+        [value]="tool.blur"
+        (input)="tool.blur = $event">
+      </app-numeric-input>px
+    </div>
+    <div>
+      <label class="d-block" for="spread">Spread</label>
+      <mat-slider color="primary" min="-100" max="100" step="1"
+        [value]="tool.spread"
+        (input)="tool.spread = $event.value">
+      </mat-slider>
+      <app-numeric-input [id]="'spread'" [min]="-100" [max]="100"
+        [value]="tool.spread"
+        (input)="tool.spread = $event">
+      </app-numeric-input>px
+    </div>
+    <div class="shadow-color">
+      <label class="d-block">Shadow Color</label>
+      <div class="shadow-color-preview"
+        [style.backgroundColor]="tool.shadowColor.css"
+        (click)="showShadowColorPicker = true;"
+        matTooltip="Show color-picker">
+      </div>
+      <app-color-picker class="shadow-color-picker" [hidden]="!showShadowColorPicker"
+        (mousedown)="$event.stopPropagation()"
+        [color]="tool.shadowColor.hex" [opacity]="tool.shadowColor.opacity"
+        (change)="onShadowColorChange($event)">
+      </app-color-picker>
+    </div>
+    <div class="inset">
+      <label class="d-block">
+        <mat-slide-toggle color="primary" [(ngModel)]="tool.inset"></mat-slide-toggle>
+        Inset
+      </label>
+    </div>
+    <div>
+      <label class="d-block" for="width">Width</label>
+      <mat-slider color="primary" min="0" max="250" step="1"
+        [value]="tool.width"
+        (input)="tool.width = $event.value">
+      </mat-slider>
+      <app-numeric-input [id]="'width'" [min]="0" [max]="250"
+        [value]="tool.width"
+        (input)="tool.width = $event">
+      </app-numeric-input>px
+    </div>
+    <div>
+      <label class="d-block" for="height">Height</label>
+      <mat-slider color="primary" min="0" max="250" step="1"
+        [value]="tool.height"
+        (input)="tool.height = $event.value">
+      </mat-slider>
+      <app-numeric-input [id]="'height'" [min]="0" [max]="250"
+        [value]="tool.height"
+        (input)="tool.height = $event">
+      </app-numeric-input>px
+    </div>
+    <div class="background-color">
+      <label class="d-block">Background Color</label>
+      <div class="background-color-preview"
+        [style.backgroundColor]="tool.boxColor.css"
+        (click)="showBackgroundColorPicker = true;"
+        matTooltip="Show color-picker">
+      </div>
+      <app-color-picker class="background-color-picker" [hidden]="!showBackgroundColorPicker"
+        (mousedown)="$event.stopPropagation()"
+        [color]="tool.boxColor.hex" [opacity]="tool.boxColor.opacity"
+        (change)="onBackgroundColorChange($event)">
+      </app-color-picker>
+    </div>
+  </div>
+  <div class="preview">
+    <div class="element-preview-wrapper">
+      <div class="element-preview" [ngStyle]="getPreviewStyle()"></div>
+    </div>
+    <app-css-preview [content]="getCssPreview()"></app-css-preview>
+  </div>
+</div>

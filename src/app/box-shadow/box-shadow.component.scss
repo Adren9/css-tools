@@ -1,0 +1,108 @@
+@import './src/scss/variables';
+
+.wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  margin: 0 auto;
+  padding: 10px;
+  box-sizing: border-box;
+}
+.controls, .preview {
+  width: 100%;
+}
+.element-preview {
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+.controls {
+  text-align: center;
+}
+.mat-slider {
+  width: 75%;
+}
+::ng-deep app-numeric-input input {
+  width: 30px;
+}
+.shadow-color-preview, .background-color-preview {
+  height: 30px;
+  width: 50px;
+  margin: 16px auto;
+  cursor: pointer;
+}
+.shadow-color, .background-color {
+  position: relative;
+}
+.shadow-color-picker, .background-color-picker {
+  position: absolute;
+  left: 50%;
+  z-index: 10;
+}
+.shadow-color-picker {
+  transform: translateX(-50%);
+}
+.background-color-picker {
+  top: 0;
+  transform: translate(-50%, -100%);
+}
+.inset label {
+  padding: 8px 0 18px 0;
+}
+.element-preview-wrapper {
+  display: flex;
+  align-items: center;
+  width: 350px;
+  height: 350px;
+  margin: 0 auto;
+  border: 1px solid #aaa;
+  overflow: hidden;
+}
+
+@media(min-width: $breakpoint_md) {
+  .shadow-color-preview, .background-color-preview {
+    margin: 16px 0;
+  }
+  .shadow-color-picker, .background-color-picker {
+    left: 0;
+  }
+  .shadow-color-picker {
+    transform: none;
+  }
+  .background-color-picker {
+    transform: translateY(-100%);
+  }
+  .wrapper {
+    width: 768px;
+  }
+  .controls {
+    text-align: left;
+  }
+  .controls, .preview {
+    width: 374px;
+  }
+  .mat-slider {
+    width: 290px;
+  }
+}
+@media(min-width: $breakpoint_lg) {
+  .wrapper {
+    width: 742px;
+  }
+  .controls, .preview {
+    width: 361px;
+  }
+  .mat-slider {
+    width: 280px;
+  }
+}
+@media(min-width: $breakpoint_xl) {
+  .wrapper {
+    width: 950px;
+  }
+  .controls, .preview {
+    width: 465px;
+  }
+  .mat-slider {
+    width: 340px;
+  }
+}

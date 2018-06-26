@@ -1,0 +1,40 @@
+@import './src/scss/variables.scss';
+
+.wrapper {
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+.sidenav {
+  height: 100vh;
+  width: $sidenav_width;
+  max-width: 100%;
+  flex-shrink: 0;
+}
+.content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: #242e3b;
+  color: #fff;
+}
+.app-header {
+  flex-shrink: 0;
+}
+.main-content {
+  height: 100%;
+  overflow: auto;
+}
+@media(max-width: $breakpoint_lg - 1) {
+  .sidenav {
+    width: 0;
+  }
+  .sidenav.opened {
+    width: $sidenav_width;
+  }
+  .content {
+    flex-shrink: 0;
+  }
+}
+
